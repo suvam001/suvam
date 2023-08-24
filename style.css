@@ -78,3 +78,7 @@ nav {
 .text-source {
     display: none; /* Hide the original content */
 }
+.content-wrapper {
+    opacity: 0; /* Initially hidden */
+    transition: opacity 1s ease;
+}
