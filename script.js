@@ -2,9 +2,11 @@
 $('.nav-button').on('click', function (event) {
     event.preventDefault();
     var target = $(this.getAttribute('href'));
-    $('html, body').stop().animate({
-        scrollTop: target.offset().top
-    }, 1000);
+    if (target.length) { // Check if the target element exists
+        $('html, body').stop().animate({
+            scrollTop: target.offset().top
+        }, 1000);
+    }
 });
 
 // Custom Cursor
