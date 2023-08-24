@@ -1,100 +1,110 @@
-/* style.css */
-
-/* Global Styles */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.5;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    cursor: none;
+    background: black;
+    color: silver;
 }
 
-.container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 20px;
+.custom-cursor {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10000;
 }
 
-h1, h2, h3 {
-  color: #333;
+.custom-cursor:before,
+.custom-cursor:after {
+    content: '';
+    position: absolute;
+    background-color: #333;
+    width: 2px;
+    height: 100%;
 }
 
-a {
-  color: #333;
-  text-decoration: none;
+.custom-cursor:before {
+    transform: rotate(45deg);
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.custom-cursor:after {
+    transform: rotate(-45deg);
 }
 
-/* Header Styles */
 header {
-  background-color: #FDD835;
-  padding: 10px 0;
+    background: #f0f0f0;
+    padding: 20px;
+    text-align: center;
 }
 
-header h1 {
-  margin: 0;
-  color: #333;
+header h1,
+header p,
+h2 {
+    color: goldenrod;
 }
 
-nav ul {
-  margin: 0;
-  padding: 0;
+nav {
+    background: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+    overflow: auto;
+    white-space: nowrap;
 }
 
-nav li {
-  display: inline;
-  margin-right: 10px;
+.nav-button {
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    transition: background 0.3s;
+    display: inline-block;
 }
 
-/* Section Styles */
-section {
-  margin-bottom: 40px;
+.nav-button:hover {
+    background: #f0f0f0;
 }
 
-section h2 {
-  margin-top: 0;
-  color: #FDD835;
+
+.skill-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 
-/* Project Styles */
-.project {
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin-bottom: 20px;
-  background-color: #F5F5F5;
+.progress-bar-label {
+    flex: 1; /* Take up remaining space */
+    text-align: left; /* Align text to the left */
+    margin-right: 10px; /* Space between label and progress bar */
 }
 
-/* Contact Form Styles */
-.form-group {
-  margin-bottom: 20px;
+.progress-bar {
+    flex: 3; /* Take up 3 times the space as the label */
+    position: relative;
+    width: 2px; /* Set the width to 50% of the parent container, or use a fixed value like 200px */
+    height: 12px;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #333;
+.progress-bar-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: yellow; 
+    width: 0;
 }
 
-input[type="text"],
-input[type="email"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-}
 
-button.button {
-  background-color: #FDD835;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
 
-button.button:hover {
-  background-color: #FFEE58;
+/* Responsive design for mobile devices */
+@media screen and (max-width: 768px) {
+    nav .nav-button {
+        display: block;
+        text-align: center;
+    }
 }
