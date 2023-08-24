@@ -1,34 +1,110 @@
-// Get the form element
-const form = document.querySelector('form');
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    cursor: none;
+    background: black;
+    color: silver;
+}
 
-// Add an event listener for form submission
-form.addEventListener('submit', function (event) {
-  event.preventDefault(); // Prevent the default form submission behavior
+.custom-cursor {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 10000;
+}
 
-  // Get the form data
-  const formData = new FormData(form);
+.custom-cursor:before,
+.custom-cursor:after {
+    content: '';
+    position: absolute;
+    background-color: #333;
+    width: 2px;
+    height: 100%;
+}
 
-  // Prepare the request
-  const xhr = new XMLHttpRequest();
-  xhr.open('POST', form.action);
-  xhr.setRequestHeader('Accept', 'application/json');
+.custom-cursor:before {
+    transform: rotate(45deg);
+}
 
-  // Handle the response
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState !== XMLHttpRequest.DONE) return;
+.custom-cursor:after {
+    transform: rotate(-45deg);
+}
 
-    if (xhr.status === 200) {
-      // Show the submission confirmation
-      alert('Form submitted successfully');
+header {
+    background: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
 
-      // Reset the form
-      form.reset();
-    } else {
-      // Optionally, handle form submission errors
-      console.error('Form submission failed');
+header h1,
+header p,
+h2 {
+    color: goldenrod;
+}
+
+nav {
+    background: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.nav-button {
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    transition: background 0.3s;
+    display: inline-block;
+}
+
+.nav-button:hover {
+    background: #f0f0f0;
+}
+
+
+.skill-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.progress-bar-label {
+    flex: 1; /* Take up remaining space */
+    text-align: left; /* Align text to the left */
+    margin-right: 10px; /* Space between label and progress bar */
+}
+
+.progress-bar {
+    flex: 3; /* Take up 3 times the space as the label */
+    position: relative;
+    width: 2px; /* Set the width to 50% of the parent container, or use a fixed value like 200px */
+    height: 12px;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: yellow; 
+    width: 0;
+}
+
+
+
+/* Responsive design for mobile devices */
+@media screen and (max-width: 768px) {
+    nav .nav-button {
+        display: block;
+        text-align: center;
     }
-  };
-
-  // Send the request
-  xhr.send(formData);
-});
+}
